@@ -1,0 +1,12 @@
+.loading__container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading__img {
+  height: 6rem;
+  width: 6rem;
+  padding: 10px;
+}

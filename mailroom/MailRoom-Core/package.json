@@ -1,0 +1,62 @@
+{
+  "name": "mailroom-core",
+  "version": "2.0.0",
+  "description": "Serverless implementation of mailroom-core functionality.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "ci-test": "jest --ci --reporters=default --reporters=jest-junit"
+  },
+  "author": "Kyle Walsh, LaunchThat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LaunchThat/LaunchThatLambda.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^6.5.4",
+    "babel-runtime": "^6.26.0",
+    "lodash": "^4.17.11",
+    "mailgun-js": "^0.22.0",
+    "moment-timezone": "^0.5.23",
+    "mysql2": "^1.6.1",
+    "node-fetch": "^2.2.0",
+    "request": "^2.88.0",
+    "source-map-support": "^0.4.18",
+    "twig": "^1.12.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "html"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.html$": "<rootDir>/__mocks__/html.js"
+    },
+    "reporters": [
+      "default",
+      "jest-junit"
+    ]
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.347.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-source-map-support": "^1.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "eslint": "^5.8.0",
+    "html-loader": "^0.5.5",
+    "jest": "^21.2.1",
+    "jest-junit": "^5.2.0",
+    "serverless-offline": "^3.28.1",
+    "serverless-webpack": "^5.2.0",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.16.2",
+    "webpack-node-externals": "^1.6.0"
+  }
+}

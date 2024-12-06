@@ -1,0 +1,52 @@
+{
+  "name": "typescript-serverless-boilerplate",
+  "version": "1.0.5",
+  "description": "A template used for creating serverless functions",
+  "scripts": {
+    "start": "serverless offline --disableCookieValidation --noAuth",
+    "test": "jest --coverage",
+    "ci-test": "jest --ci --reporters=default --reporters=jest-junit"
+  },
+  "author": "Chad Maycumber & Kyle Walsh, Launch that",
+  "license": "ISC",
+  "jest": {
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js?|ts?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ]
+  },
+  "dependencies": {
+    "knex": "^0.16.5",
+    "moment-timezone": "^0.5.23",
+    "mysql2": "^1.6.5",
+    "node-fetch": "^2.3.0",
+    "twig": "^1.13.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/lodash": "^4.14.123",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.13.4",
+    "aws-sdk": "^2.438.0",
+    "jest": "^24.7.1",
+    "jest-junit": "^6.3.0",
+    "mock-knex": "^0.4.4",
+    "serverless-offline": "^3.28.1",
+    "serverless-plugin-typescript": "^1.1.7",
+    "serverless-webpack": "^5.2.0",
+    "ts-jest": "^24.0.2",
+    "ts-lint": "^4.5.1",
+    "ts-loader": "^5.3.3",
+    "tslint": "^5.13.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.4.3",
+    "typescript-tslint-plugin": "^0.3.0",
+    "webpack": "^4.16.2",
+    "webpack-node-externals": "^1.6.0"
+  }
+}

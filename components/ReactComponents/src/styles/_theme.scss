@@ -1,0 +1,79 @@
+/* Themes */
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-Regular.otf');
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-RegularItalic.otf');
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-SemiBold.otf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-SemiBoldItalic.otf');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-Black.otf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-BlackItalic.otf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+:root {
+  // Theme color pallet
+  --primaryColor--light: #CEDCE7;
+  --primaryColor: #064A83;
+  --primaryColor--dark: #021A2F;
+  --secondaryColor--light: #F4E9F7;
+  --secondaryColor: #AC52C0;
+  --secondaryColor--dark: #8A3E92;
+  --accentColor--light: #E8F8FD;
+  --accentColor: #42C7F3;
+  --accentColor--dark: #39A7CB;
+  --extraColor1--light: #E0EEB2;
+  --extraColor1: #ABD22A;
+  --extraColor1--dark: #7E8F1D;
+  --extraColor2--light: #FDE6E6;
+  --extraColor2: #F53737;
+  --extraColor2--dark: #B42525;
+  --extraColor3--light: #FEF4E0;
+  --extraColor3: #FDA800;
+  --extraColor3--dark: #BA7200;
+
+  // Status colors
+  --successColor--light: #E0EEB2;
+  --successColor: #ABD22A;
+  --successColor--dark: #7E8F1D;
+  --errorColor--light: #FDE6E6;
+  --errorColor: #F53737;
+  --errorColor--dark: #B42525;
+  --warningColor--light: #FEF4E0;
+  --warningColor: #FDA800;
+  --warningColor--dark: #BA7200;
+
+  // Text colors
+  --linkColor: #AC52C0;
+  --linkColor--hover: #8A3E92;
+  --textColor--light: #CED2D6;
+  --textColor: #798490;
+  --textColor--dark: #392F33;
+
+  // Background
+  --backgroundColor: #E0E8EF;
+
+  // Spacing variable
+  --gutter: .5rem;
+}

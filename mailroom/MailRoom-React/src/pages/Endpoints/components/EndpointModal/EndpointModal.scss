@@ -1,0 +1,44 @@
+.endpointModal__flex2 {
+  flex: 2!important;
+}
+
+.endpointModal__overallRouteContainer {
+  margin-top: var(--gutter);
+  margin-bottom: calc(var(--gutter)/2);
+}
+
+.endpointModal__routeContainer {
+  margin-bottom: var(--gutter);
+}
+
+.endpointModal__routeLink {
+  color: var(--textColor);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.endpointModal__routeRow {
+  padding: calc(2*var(--gutter));
+  border: 2px solid var(--primaryColor--light);
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.endpointModal__routeIcon {
+  margin-right: 10px;
+}
+
+.endpointModal__headersContainer {
+  padding: calc(2*var(--gutter));
+  padding-top: var(--gutter);
+
+  &.error {
+    border-color: var(--errorColor);
+  }
+}
+
+.endpointsModal__fieldOptions {
+  min-width: 350px;
+  margin: 0;
+}

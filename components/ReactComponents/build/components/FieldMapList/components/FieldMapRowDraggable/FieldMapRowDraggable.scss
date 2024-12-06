@@ -1,0 +1,49 @@
+.fieldMapRow__iconColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  padding: var(--gutter); 
+
+  &.fieldMapRow__iconColumn__iconEnd {
+    justify-content: flex-end;
+    padding-bottom: 17px;
+  }
+}
+
+.fieldMapRow__addIcon {
+  font-size: 2.5rem!important;
+  color: var(--textColor);
+  user-select: none;
+
+  &:hover {
+    color: var(--primaryColor);
+  }
+}
+
+.fieldMapRow__dragIcon {
+  font-size: 2.5rem!important;
+  color: var(--textColor);
+  user-select: none;
+  &.fieldMapRow__dragIcon--notVisible {
+    visibility: hidden;
+  }
+  &:hover {
+    color: var(--linkColor);
+  }
+}
+
+.fieldMapRow--disableInteraction {
+  transform: none !important;
+  display: none !important;
+}
+
+.fieldMapRow__deleteIcon {
+  font-size: 2.5rem!important;
+  color: var(--textColor);
+  user-select: none;
+
+  &:hover {
+    color: var(--errorColor);
+  }
+}

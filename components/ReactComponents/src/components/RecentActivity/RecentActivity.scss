@@ -1,0 +1,25 @@
+.recentActivity__row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.recentActivity__link {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.recentActivity__date {
+  margin-top: 6px;
+  font-size: .9rem;
+}
+
+.recentActivity__icon {
+  margin-left: 1.5rem;
+  margin-right: 2rem;
+}
+
+.recentActivity__information__row {
+  display: inline-block!important;
+}

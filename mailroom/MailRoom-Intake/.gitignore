@@ -1,0 +1,14 @@
+# package directories
+node_modules
+
+# webpack
+.webpack
+
+# Jest
+coverage
+
+# Serverless directories
+.serverless
+
+# Linux directory file
+.directory

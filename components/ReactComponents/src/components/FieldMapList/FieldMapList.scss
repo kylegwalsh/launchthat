@@ -1,0 +1,29 @@
+.fieldMapList__wrapper {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  padding: var(--gutter);
+  border: var(--gutter);
+  padding-bottom: 0;
+  transition: background-color 0.1s ease, opacity 0.1s ease;
+  user-select: none;
+}
+
+.fieldMapList__wrapper--isDraggingOver {
+  background-color: var(--primaryColor--light);
+}
+
+.fieldMapList__wrapper--isDropDisabled {
+  opacity: .5;
+}
+
+.fieldMapList__dropZone {
+  /* stop the list collapsing when empty */
+  // min-height: ${scrollContainerHeight}px;
+  /*
+    not relying on the items for a margin-bottom
+    as it will collapse when the list is empty
+  */
+  margin-bottom: var(--gutter);
+}

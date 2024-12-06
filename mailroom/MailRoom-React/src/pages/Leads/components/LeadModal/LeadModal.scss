@@ -1,0 +1,55 @@
+.leadModal__endpointContainer {
+  padding: 0;
+}
+
+.leadModal__statusRow {
+  border-bottom: 2px solid var(--primaryColor--light);
+  padding: 10px 15px;
+}
+
+.leadModal__statusJSON {
+  margin: 0;
+  user-select: text;
+}
+
+.leadModal__statusRow:last-child {
+  border-bottom: 0;
+}
+
+.leadModal__progressContainer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.leadModal__statusLabel {
+  margin: 0px;
+}
+
+.leadModal__statusContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.leadModal__overallStatus {
+  font-weight: bold;
+  margin-left: auto;
+}
+
+.leadModal__overflowHidden {
+  overflow: hidden;
+}
+
+.leadModal__refireButtonRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: var(--gutter) !important;
+  margin-right: var(--gutter) !important;
+  margin-top: calc(3*var(--gutter));
+  margin-bottom: calc(3*var(--gutter));
+}
+
+.leadModal__noEndpointsText {
+  padding: 10px;
+}

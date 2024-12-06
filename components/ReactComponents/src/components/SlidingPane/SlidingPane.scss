@@ -1,0 +1,28 @@
+.slidingPane__header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.slidingPane__title {
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 54px;
+}
+
+.slidingPane__close {
+  padding: 15px;
+  color: var(--textColor--dark);
+  cursor: pointer;
+}
+
+.slidingPane__content {
+  padding: 15px;
+  display: flex;
+}
+
+.SlideModal {
+  background-color: var(--backgroundColor);
+  width: 500px;
+}

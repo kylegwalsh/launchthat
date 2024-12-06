@@ -1,0 +1,13 @@
+.operationButton {
+  color: #0000008a;
+  padding: .2em;
+  cursor: pointer;
+}
+
+.operationButton__container {
+  display: flex;
+
+  svg:not(:last-child) {
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,35 @@
+#index:
+#    path: /
+auth_google:
+    path: /auth/
+    controller: App\Controller\AuthController::google
+
+get_accounts: 
+    path: /api/get-accounts/
+    controller: App\Controller\ApiController::getAccounts
+    methods: [GET]
+
+get_campaigns: 
+    path: /api/get-campaigns/
+    controller: App\Controller\ApiController::getCampaigns
+    methods: [GET]
+
+get_adgroups: 
+    path: /api/get-adgroups/
+    controller: App\Controller\ApiController::getAdgroups
+    methods: [GET]
+
+get_keywords: 
+    path: /api/get-keywords/
+    controller: App\Controller\ApiController::getKeywords
+    methods: [GET]
+
+get_creatives: 
+    path: /api/get-creatives/
+    controller: App\Controller\ApiController::getCreatives
+    methods: [GET]
+
+get-row:
+    path: /api/get-row/
+    controller: App\Controller\ApiController::getRow
+    methods: [GET]

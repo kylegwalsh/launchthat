@@ -1,0 +1,8 @@
+.fieldMapModal__mappingContainer {
+  padding: calc(2*var(--gutter));
+  padding-top: var(--gutter);
+
+  &.error {
+    border-color: var(--errorColor);
+  }
+}

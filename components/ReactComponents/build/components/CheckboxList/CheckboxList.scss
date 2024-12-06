@@ -1,0 +1,50 @@
+.checkboxList {
+  width: 100%;
+  user-select: none;
+}
+
+.checkboxList__columnWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkboxList__rowWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkboxList__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.checkboxList__arrow {
+  margin-left: calc(2*var(--gutter));
+  transition: transform .5s ease;
+  cursor: pointer;
+}
+
+.checkboxList__arrow--open {
+  transform: rotate( -180deg );            
+}
+
+.checkboxList__arrow--closed {
+  transform: rotate( 0deg );            
+}
+
+.checkboxList__expandableRow {
+  transition: all .5s ease;
+}
+
+.checkboxList__expandableRow--open {
+  max-height: 500px;
+  overflow-y: scroll;
+  display: block;
+}
+
+.checkboxList__expandableRow--closed {
+  max-height: 0;
+  display: none;
+}

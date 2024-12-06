@@ -1,0 +1,37 @@
+.deleteModal {
+  & > div:last-of-type {
+    & > div:first-of-type {
+      padding: 50px;
+      width: 700px;
+      max-width: 98%;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.deleteModal__header {
+  display: flex;
+  align-items: center;
+}
+
+.deleteModal__headerText {
+  font-weight: bold;
+}
+
+.deleteModal__exit {
+  margin-left: auto;
+  font-size: 28px!important;
+  cursor: pointer;
+}
+
+.deleteModal__button {
+  margin-left: auto!important;
+  margin-top: 25px!important;
+  background-color: var(--errorColor)!important;
+
+  &:hover {
+    background-color: var(--errorColor)!important;
+    filter: brightness(140%);
+  }
+}

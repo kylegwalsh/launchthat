@@ -1,0 +1,11 @@
+api_platform:
+    allow_plain_identifiers: true
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    collection:
+        pagination:
+            client_items_per_page: true # Disabled by default
+            items_per_page_parameter_name: itemsPerPage # Default value
+
+framework:
+    serializer: { enable_annotations: true }

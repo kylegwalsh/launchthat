@@ -1,0 +1,10 @@
+.label {
+  text-transform: capitalize;
+  color: var(--textColor--dark);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.label__required {
+  color: var(--errorColor);
+}

@@ -1,0 +1,21 @@
+.googleButton {
+  border-radius: 4px!important;
+  padding: 5px 15px!important;
+  box-shadow: -3px 2px 12px 3px rgba(0, 0, 0, .3)!important;
+  user-select: none!important;
+  outline: none!important;
+  box-sizing: border-box!important;
+
+  &:hover {
+    background-color: #dadada!important;
+
+    div {
+      background-color: #dadada!important;
+    }
+  }
+
+  span {
+    font-size: 16px!important;
+    font-weight: bold!important;
+  }
+}

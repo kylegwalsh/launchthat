@@ -1,0 +1,17 @@
+button.button {
+  background-color: var(--linkColor);
+  color: #fff!important;
+  text-transform: none;
+  padding: 8px 30px;
+  border-radius: 50px;
+  max-height: 40px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: var(--linkColor--hover);
+  }
+
+  &:disabled {
+    opacity: .7;
+  }
+}

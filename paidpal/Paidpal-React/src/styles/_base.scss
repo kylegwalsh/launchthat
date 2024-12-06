@@ -1,0 +1,212 @@
+/* Base styles (add any global styles here) */
+
+/* Top Level */
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans",sans-serif;
+  font-size: 16px;
+  line-height: 1.42857;
+  color: var(--textColor--med);
+  background-color: var(--backgroundColor);
+  height: 100%;
+  width: 100%;
+  font-family: 'Metropolis', sans-serif;
+}
+
+#root {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* Headers */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--textColor--dark);
+}
+
+h4 {
+  display: block;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+/* Overflow */
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+/* Input Elements */
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Scroll Bar */
+
+::-webkit-scrollbar {
+  height: .4em;
+  width: .4em;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb {
+  overflow: visible;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.2); 
+}
+
+/* Links */
+
+a {
+  color: var(--linkColor);
+}
+
+a:hover {
+  color: var(--linkColor--hover);
+}
+
+/* Icons */
+
+svg {
+  font-size: 1.5rem;
+}
+
+/* Grid */
+
+.container {
+  padding-right: calc(4*var(--gutter));
+  padding-left: calc(4*var(--gutter));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.full-container {
+  padding-right: calc(4*var(--gutter));
+  padding-left: calc(4*var(--gutter));
+  margin-right: auto;
+  margin-left: auto;
+  flex: 1;
+  min-height: 100%;
+  flex-direction: column;
+  display: flex;
+}
+
+.fill-space {
+  width: 100%;
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-left: calc(-1*var(--gutter));
+  margin-right: calc(-1*var(--gutter));
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.row-overflow {
+  overflow-x: hidden;
+}
+
+/* Margin and Padding */
+
+.m-0 {
+  margin: 0!important;
+}
+
+.m-t-0 {
+  margin-top: 0!important;
+}
+
+.m-b-0 {
+  margin-bottom: 0!important;
+}
+
+.m-l-0 {
+  margin-left: 0!important;
+}
+
+.m-r-0 {
+  margin-right: 0!important;
+}
+
+.m-t-a {
+  margin-top: auto!important;
+}
+
+.m-b-a {
+  margin-bottom: auto!important;
+}
+
+.m-l-a {
+  margin-left: auto!important;
+}
+
+.m-r-a {
+  margin-right: auto!important;
+}
+
+.p-0 {
+  padding: 0!important;
+}
+
+.p-t-0 {
+  padding-top: 0!important;
+}
+
+.p-b-0 {
+  padding-bottom: 0!important;
+}
+
+.p-l-0 {
+  padding-left: 0!important;
+}
+
+.p-r-0 {
+  padding-right: 0!important;
+}
+
+.bottom-gutter {
+  margin-bottom: var(--gutter);
+}
+
+.top-gutter {
+  margin-top: var(--gutter);
+}
+
+/* Alignment */
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}

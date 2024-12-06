@@ -1,0 +1,25 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            id: App\Security\UserProvider
+
+    firewalls:
+        main:
+            pattern: ^/
+            anonymous: true
+            stateless: true
+            guard:
+                authenticators:
+                    - App\Security\TokenAuthenticator
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+          - { path: ^/api/(.+), roles: ROLE_MAILROOM, methods: [GET] }
+          - { path: ^/api/(.+), roles: ROLE_ADMIN }
+          - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY, ips: [45.27.253.208/28, 170.55.166.136/30, 170.55.47.32/28, 45.27.253.210, 127.0.0.1] }
+          - { path: ^/api, roles: ROLE_NO_ACCESS}
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }

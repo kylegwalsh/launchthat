@@ -1,0 +1,30 @@
+.creativesTable__creativeWrapper {
+  padding: 24px 24px 24px 0px;
+}
+
+.creativesTable__headline {
+  color: #0000cc;
+  font-size: 13px;
+  text-decoration: underline;
+  text-overflow: ellipsis;
+}
+
+.creativesTable__headline:hover {
+  color: #0000cc;
+}
+
+.creativesTable__description {
+  color: black;
+  font-size: 11px;
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word; 
+}
+
+.creativesTable__displayUrl {
+  color: #339933; 
+  font-size: 11px;
+  word-wrap: wrap;
+}

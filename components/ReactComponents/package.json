@@ -1,0 +1,73 @@
+{
+  "name": "lt-components",
+  "version": "1.6.9",
+  "description": "Launch That react component library",
+  "private": true,
+  "main": "build/components/index.js",
+  "types": "build/components/index.d.ts",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "rm -rf ./build && tsc --noEmit false --module CommonJS --declaration --isolatedModules false --jsx react --allowJs false --resolveJsonModule false --allowSyntheticDefaultImports false --esModuleInterop false --skipLibCheck false && npm run copy-assets-to-lib && npm run copy-scss-to-lib",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject",
+    "copy-assets-to-lib": "npm-run-all -s copy-png-to-lib copy-gif-to-lib copy-jpg-to-lib",
+    "copy-png-to-lib": "cpx \"./src/components/**/*.png\" ./build/components",
+    "copy-gif-to-lib": "cpx \"./src/components/**/*.gif\" ./build/components",
+    "copy-jpg-to-lib": "cpx \"./src/components/**/*.jpg\" ./build/components",
+    "copy-scss-to-lib": "npm-run-all -s copy-base-scss copy-component-scss",
+    "copy-base-scss": "cpx \"./src/**/*.scss\" ./build/",
+    "copy-component-scss": "cpx \"./src/components/**/*.scss\" ./build/components"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "@types/react-beautiful-dnd": "10.1.0",
+    "@material-ui/core": "3.8.3",
+    "@material-ui/icons": "3.0.1",
+    "moment": "2.24.0",
+    "mui-datatables": "2.0.0-beta.56",
+    "rc-progress": "2.3.0",
+    "react": "16.8.3",
+    "react-beautiful-dnd": "10.1.0",
+    "react-custom-scrollbars": "4.2.1",
+    "react-dates": "18.4.0",
+    "react-dom": "16.8.3",
+    "react-google-login": "5.0.0",
+    "react-icons": "3.3.0",
+    "react-json-view": "1.19.1",
+    "react-notifications": "1.4.3",
+    "react-router-dom": "4.3.1",
+    "react-select": "2.3.0",
+    "react-slide-out": "0.1.4",
+    "react-toggle": "4.0.2",
+    "react-tooltip": "3.10.0",
+    "typescript": "3.3.3333"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.6",
+    "@types/node": "11.9.5",
+    "@types/react": "16.8.4",
+    "@types/react-custom-scrollbars": "4.0.5",
+    "@types/react-dates": "17.1.5",
+    "@types/react-dom": "16.8.2",
+    "@types/react-router-dom": "4.3.1",
+    "@types/react-select": "2.0.11",
+    "@types/react-toggle": "4.0.2",
+    "cpx": "1.5.0",
+    "node-sass-chokidar": "1.3.4",
+    "npm-run-all": "4.1.5",
+    "react-scripts": "2.1.5",
+    "react-scripts-ts": "3.1.0",
+    "tslint": "5.11.0",
+    "tslint-eslint-rules": "5.4.0",
+    "tslint-react": "3.6.0",
+    "typescript-tslint-plugin": "0.3.0"
+  }
+}

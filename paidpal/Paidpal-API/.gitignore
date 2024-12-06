@@ -1,0 +1,84 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+##
+#--------------------------
+#  Global gitignore items
+#--------------------------
+
+# OSX
+*.DS_Store
+.DS_Store
+.DS_Store?
+._.DS_Store
+
+# SASS
+/.sass-cache
+.sass-cache*
+config.codekit
+*codekit-config.json
+*.map
+
+# Editors
+*.sw*
+.sw*
+subl
+._*
+*._*
+.subl
+*.subl
+._.*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+*[Tt]humbs.db
+*.Trashes
+.vscode
+*.vscode
+
+# Vagrant
+.vagrant
+VagrantFile
+vagrant/
+
+# Composer
+vendor/
+composer.json-e
+
+# Node
+node_modules
+npm-debug.log
+bower_components/
+.idea/
+
+# logs
+*.log
+error_log
+access_log
+
+# Cache
+cache/*
+/.cache
+
+# DB
+*.sql
+
+# Uploads Zip
+*.tgz
+*.gz
+#
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+coverage#

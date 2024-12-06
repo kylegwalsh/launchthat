@@ -1,0 +1,625 @@
+{
+  "service": {
+    "service": "mailroom-core",
+    "serviceObject": {
+      "name": "mailroom-core"
+    },
+    "provider": {
+      "stage": "prod",
+      "region": "us-east-1",
+      "variableSyntax": "\\${([ ~:a-zA-Z0-9._@'\",\\-\\/\\(\\)]+?)}",
+      "name": "aws",
+      "runtime": "nodejs8.10",
+      "timeout": 900,
+      "environment": {
+        "stage": "prod"
+      },
+      "iamRoleStatements": [
+        {
+          "Effect": "Allow",
+          "Resource": "*",
+          "Action": [
+            "sns:Publish",
+            "logs:CreateLogGroup",
+            "logs:CreateLogStream",
+            "logs:PutLogEvents",
+            "ec2:CreateNetworkInterface",
+            "ec2:DescribeNetworkInterfaces",
+            "ec2:DeleteNetworkInterface",
+            "ssm:GetParameters"
+          ]
+        }
+      ],
+      "versionFunctions": true,
+      "remoteFunctionData": null,
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ServerlessDeploymentBucket": {
+            "Type": "AWS::S3::Bucket"
+          },
+          "ControllerLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/mailroom-core-prod-controller"
+            }
+          },
+          "FireEndpointLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/mailroom-core-prod-fireEndpoint"
+            }
+          },
+          "HandleResponseLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/mailroom-core-prod-handleResponse"
+            }
+          },
+          "IamRoleLambdaExecution": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": [
+                        "lambda.amazonaws.com"
+                      ]
+                    },
+                    "Action": [
+                      "sts:AssumeRole"
+                    ]
+                  }
+                ]
+              },
+              "Policies": [
+                {
+                  "PolicyName": {
+                    "Fn::Join": [
+                      "-",
+                      [
+                        "prod",
+                        "mailroom-core",
+                        "lambda"
+                      ]
+                    ]
+                  },
+                  "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:CreateLogStream"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/mailroom-core-prod-controller:*"
+                          },
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/mailroom-core-prod-fireEndpoint:*"
+                          },
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/mailroom-core-prod-handleResponse:*"
+                          }
+                        ]
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:PutLogEvents"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/mailroom-core-prod-controller:*:*"
+                          },
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/mailroom-core-prod-fireEndpoint:*:*"
+                          },
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/mailroom-core-prod-handleResponse:*:*"
+                          }
+                        ]
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Path": "/",
+              "RoleName": {
+                "Fn::Join": [
+                  "-",
+                  [
+                    "mailroom-core",
+                    "prod",
+                    "us-east-1",
+                    "lambdaRole"
+                  ]
+                ]
+              },
+              "ManagedPolicyArns": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+                    ]
+                  ]
+                }
+              ]
+            }
+          },
+          "ControllerLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/mailroom-core/prod/1564591817800-2019-07-31T16:50:17.800Z/mailroom-core.zip"
+              },
+              "FunctionName": "mailroom-core-prod-controller",
+              "Handler": "functions/controller.handler",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs8.10",
+              "Timeout": 900,
+              "Environment": {
+                "Variables": {
+                  "stage": "prod"
+                }
+              },
+              "VpcConfig": {
+                "SecurityGroupIds": [
+                  "sg-05aaf52a6596e5c3f"
+                ],
+                "SubnetIds": [
+                  "subnet-04243989fa5255d4c",
+                  "subnet-085556d0c080df501",
+                  "subnet-055f8d0fd79c7d59e",
+                  "subnet-0019ebefaea9e0043",
+                  "subnet-0fff1560b4e4a9894",
+                  "subnet-08df875155c0d8bbd"
+                ]
+              }
+            },
+            "DependsOn": [
+              "ControllerLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "ControllerLambdaVersionam7BLxtDdk6LmZNDenI1Kl4yysETkdJ9mdL4VpE": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ControllerLambdaFunction"
+              },
+              "CodeSha256": "8r3HRsrJKdOhUQqW+WL4YNKLuRmqFiVoE0EEuLI6V54="
+            }
+          },
+          "FireEndpointLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/mailroom-core/prod/1564591817800-2019-07-31T16:50:17.800Z/mailroom-core.zip"
+              },
+              "FunctionName": "mailroom-core-prod-fireEndpoint",
+              "Handler": "functions/fireEndpoint.handler",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs8.10",
+              "Timeout": 900,
+              "Environment": {
+                "Variables": {
+                  "stage": "prod"
+                }
+              },
+              "VpcConfig": {
+                "SecurityGroupIds": [
+                  "sg-05aaf52a6596e5c3f"
+                ],
+                "SubnetIds": [
+                  "subnet-04243989fa5255d4c",
+                  "subnet-085556d0c080df501",
+                  "subnet-055f8d0fd79c7d59e",
+                  "subnet-0019ebefaea9e0043",
+                  "subnet-0fff1560b4e4a9894",
+                  "subnet-08df875155c0d8bbd"
+                ]
+              }
+            },
+            "DependsOn": [
+              "FireEndpointLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "FireEndpointLambdaVersionMk572FaOKkge3Jh4otUmijjXFxYvodHThf9EQxhw": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "FireEndpointLambdaFunction"
+              },
+              "CodeSha256": "8r3HRsrJKdOhUQqW+WL4YNKLuRmqFiVoE0EEuLI6V54="
+            }
+          },
+          "HandleResponseLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/mailroom-core/prod/1564591817800-2019-07-31T16:50:17.800Z/mailroom-core.zip"
+              },
+              "FunctionName": "mailroom-core-prod-handleResponse",
+              "Handler": "functions/handleResponse.handler",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs8.10",
+              "Timeout": 900,
+              "Environment": {
+                "Variables": {
+                  "stage": "prod"
+                }
+              },
+              "VpcConfig": {
+                "SecurityGroupIds": [
+                  "sg-05aaf52a6596e5c3f"
+                ],
+                "SubnetIds": [
+                  "subnet-04243989fa5255d4c",
+                  "subnet-085556d0c080df501",
+                  "subnet-055f8d0fd79c7d59e",
+                  "subnet-0019ebefaea9e0043",
+                  "subnet-0fff1560b4e4a9894",
+                  "subnet-08df875155c0d8bbd"
+                ]
+              }
+            },
+            "DependsOn": [
+              "HandleResponseLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "HandleResponseLambdaVersionTGe2REXk5fc5BMYI4JE0YOnoXa3IVNDlBt1orr668": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "HandleResponseLambdaFunction"
+              },
+              "CodeSha256": "8r3HRsrJKdOhUQqW+WL4YNKLuRmqFiVoE0EEuLI6V54="
+            }
+          },
+          "ControllerSnsSubscriptionMailroomcoreprodnewLead": {
+            "Type": "AWS::SNS::Subscription",
+            "Properties": {
+              "TopicArn": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-newLead",
+              "Protocol": "lambda",
+              "Endpoint": {
+                "Fn::GetAtt": [
+                  "ControllerLambdaFunction",
+                  "Arn"
+                ]
+              }
+            }
+          },
+          "ControllerLambdaPermissionMailroomcoreprodnewLeadSNS": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "ControllerLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "sns.",
+                    {
+                      "Ref": "AWS::URLSuffix"
+                    }
+                  ]
+                ]
+              },
+              "SourceArn": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-newLead"
+            }
+          },
+          "FireEndpointSnsSubscriptionMailroomcoreprodfireEndpoint": {
+            "Type": "AWS::SNS::Subscription",
+            "Properties": {
+              "TopicArn": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-fireEndpoint",
+              "Protocol": "lambda",
+              "Endpoint": {
+                "Fn::GetAtt": [
+                  "FireEndpointLambdaFunction",
+                  "Arn"
+                ]
+              }
+            }
+          },
+          "FireEndpointLambdaPermissionMailroomcoreprodfireEndpointSNS": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "FireEndpointLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "sns.",
+                    {
+                      "Ref": "AWS::URLSuffix"
+                    }
+                  ]
+                ]
+              },
+              "SourceArn": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-fireEndpoint"
+            }
+          },
+          "HandleResponseSnsSubscriptionMailroomcoreprodendpointSuccess": {
+            "Type": "AWS::SNS::Subscription",
+            "Properties": {
+              "TopicArn": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-endpointSuccess",
+              "Protocol": "lambda",
+              "Endpoint": {
+                "Fn::GetAtt": [
+                  "HandleResponseLambdaFunction",
+                  "Arn"
+                ]
+              }
+            }
+          },
+          "HandleResponseLambdaPermissionMailroomcoreprodendpointSuccessSNS": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "HandleResponseLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "sns.",
+                    {
+                      "Ref": "AWS::URLSuffix"
+                    }
+                  ]
+                ]
+              },
+              "SourceArn": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-endpointSuccess"
+            }
+          },
+          "HandleResponseSnsSubscriptionMailroomcoreprodendpointFailure": {
+            "Type": "AWS::SNS::Subscription",
+            "Properties": {
+              "TopicArn": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-endpointFailure",
+              "Protocol": "lambda",
+              "Endpoint": {
+                "Fn::GetAtt": [
+                  "HandleResponseLambdaFunction",
+                  "Arn"
+                ]
+              }
+            }
+          },
+          "HandleResponseLambdaPermissionMailroomcoreprodendpointFailureSNS": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "HandleResponseLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "sns.",
+                    {
+                      "Ref": "AWS::URLSuffix"
+                    }
+                  ]
+                ]
+              },
+              "SourceArn": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-endpointFailure"
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": {
+              "Ref": "ServerlessDeploymentBucket"
+            }
+          },
+          "ControllerLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ControllerLambdaVersionam7BLxtDdk6LmZNDenI1Kl4yysETkdJ9mdL4VpE"
+            }
+          },
+          "FireEndpointLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "FireEndpointLambdaVersionMk572FaOKkge3Jh4otUmijjXFxYvodHThf9EQxhw"
+            }
+          },
+          "HandleResponseLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "HandleResponseLambdaVersionTGe2REXk5fc5BMYI4JE0YOnoXa3IVNDlBt1orr668"
+            }
+          }
+        }
+      },
+      "coreCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ServerlessDeploymentBucket": {
+            "Type": "AWS::S3::Bucket"
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": {
+              "Ref": "ServerlessDeploymentBucket"
+            }
+          }
+        }
+      },
+      "vpc": {}
+    },
+    "custom": {
+      "webpack": {
+        "webpackConfig": "./webpack.config.js",
+        "includeModules": true
+      },
+      "stage": "prod"
+    },
+    "plugins": [
+      "serverless-webpack",
+      "serverless-offline"
+    ],
+    "pluginsData": {},
+    "functions": {
+      "controller": {
+        "handler": "functions/controller.handler",
+        "vpc": {
+          "securityGroupIds": [
+            "sg-05aaf52a6596e5c3f"
+          ],
+          "subnetIds": [
+            "subnet-04243989fa5255d4c",
+            "subnet-085556d0c080df501",
+            "subnet-055f8d0fd79c7d59e",
+            "subnet-0019ebefaea9e0043",
+            "subnet-0fff1560b4e4a9894",
+            "subnet-08df875155c0d8bbd"
+          ]
+        },
+        "events": [
+          {
+            "sns": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-newLead"
+          }
+        ],
+        "name": "mailroom-core-prod-controller",
+        "package": {
+          "artifact": ".serverless\\mailroom-core.zip"
+        },
+        "memory": 1024,
+        "timeout": 900,
+        "runtime": "nodejs8.10"
+      },
+      "fireEndpoint": {
+        "handler": "functions/fireEndpoint.handler",
+        "vpc": {
+          "securityGroupIds": [
+            "sg-05aaf52a6596e5c3f"
+          ],
+          "subnetIds": [
+            "subnet-04243989fa5255d4c",
+            "subnet-085556d0c080df501",
+            "subnet-055f8d0fd79c7d59e",
+            "subnet-0019ebefaea9e0043",
+            "subnet-0fff1560b4e4a9894",
+            "subnet-08df875155c0d8bbd"
+          ]
+        },
+        "events": [
+          {
+            "sns": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-fireEndpoint"
+          }
+        ],
+        "name": "mailroom-core-prod-fireEndpoint",
+        "package": {
+          "artifact": ".serverless\\mailroom-core.zip"
+        },
+        "memory": 1024,
+        "timeout": 900,
+        "runtime": "nodejs8.10"
+      },
+      "handleResponse": {
+        "handler": "functions/handleResponse.handler",
+        "vpc": {
+          "securityGroupIds": [
+            "sg-05aaf52a6596e5c3f"
+          ],
+          "subnetIds": [
+            "subnet-04243989fa5255d4c",
+            "subnet-085556d0c080df501",
+            "subnet-055f8d0fd79c7d59e",
+            "subnet-0019ebefaea9e0043",
+            "subnet-0fff1560b4e4a9894",
+            "subnet-08df875155c0d8bbd"
+          ]
+        },
+        "events": [
+          {
+            "sns": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-endpointSuccess"
+          },
+          {
+            "sns": "arn:aws:sns:us-east-1:382977655890:mailroom-core-prod-endpointFailure"
+          }
+        ],
+        "name": "mailroom-core-prod-handleResponse",
+        "package": {
+          "artifact": ".serverless\\mailroom-core.zip"
+        },
+        "memory": 1024,
+        "timeout": 900,
+        "runtime": "nodejs8.10"
+      }
+    },
+    "layers": {}
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/mailroom-core/prod/1564591817800-2019-07-31T16:50:17.800Z",
+    "artifact": ""
+  }
+}

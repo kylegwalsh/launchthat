@@ -1,0 +1,54 @@
+.notification-container {
+  padding-bottom: 5px;
+}
+
+.notification-message {
+  color: var(--textColor);
+
+  h4 {
+    color: var(--textColor)!important;
+    font-size: 15px!important;
+  }
+
+  .message {
+    font-size: 14px!important;
+  }
+}
+
+.notification {
+  background-color:#fff;
+  border-left: 5px solid transparent;
+  box-sizing: border-box;
+}
+
+.notification-info {
+  border-color: var(--secondaryColor);
+
+  &:before {
+    color: var(--secondaryColor);
+  }
+}
+
+.notification-success {
+  border-color: var(--successColor);
+
+  &:before {
+    color: var(--successColor);
+  }
+}
+
+.notification-error {
+  border-color: var(--errorColor);
+
+  &:before {
+    color: var(--errorColor);
+  }
+}
+
+.notification-warning {
+  border-color: var(--warningColor);
+
+  &:before {
+    color: var(--warningColor);
+  }
+}

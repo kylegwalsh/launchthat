@@ -1,0 +1,28 @@
+.dropDown {
+  font-size: 15px;
+
+  li {
+    display: flex;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      text-align: center;
+
+      svg {
+        font-size: 20px!important;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  div:last-child {
+    width: auto!important;
+  }
+}
+
+.dropDownIcon {
+  font-size: 14px;
+  margin-right: 2px;
+}

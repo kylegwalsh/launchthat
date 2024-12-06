@@ -1,0 +1,28 @@
+.tabs__container {
+  display: flex;
+}
+
+.tabs__content {
+  display: flex;
+}
+
+
+.tabs__tab {
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  padding: calc(1.5*var(--gutter)) calc(3.5*var(--gutter));
+  align-self: center;
+  font-weight: 500;
+  color: black;
+  box-sizing: border-box;
+
+  &:hover {
+    color: var(--linkColor);
+  }
+
+  &.active {
+    color: var(--linkColor);
+    border-bottom: 3px solid var(--linkColor);
+  }
+}

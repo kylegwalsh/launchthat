@@ -1,0 +1,29 @@
+.chip {
+  font-weight: bold;
+  border: solid 1px transparent!important;
+  font-size: 12px!important;
+}
+
+.chip--success {
+  border-color: var(--successColor--dark) !important;
+  color: var(--successColor--dark) !important;
+  background-color: var(--successColor--light) !important;
+}
+
+.chip--danger {
+  border-color: var(--errorColor--dark) !important;
+  color: var(--errorColor--dark) !important;
+  background-color: var(--errorColor--light) !important;
+}
+
+.chip--warning {
+  border-color: var(--warningColor--dark) !important;
+  color: var(--warningColor--dark) !important;
+  background-color: var(--warningColor--light) !important;
+}
+
+.chip--default {
+  border-color: var(--textColor--dark) !important;
+  color: var(--textColor--dark) !important;
+  background-color: var(--textColor--light) !important;
+}

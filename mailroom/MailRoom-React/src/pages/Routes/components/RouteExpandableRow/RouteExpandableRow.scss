@@ -1,0 +1,28 @@
+.routeExpandableRow__routeContainer {
+  margin-bottom: var(--gutter);
+}
+
+.routeExpandableRow__routeLink {
+  color: var(--textColor);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.routeExpandableRow__routeRow {
+  padding: calc(2*var(--gutter));
+  border: 2px solid var(--primaryColor--light);
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+  overflow: auto;
+}
+
+.routeExpandableRow__routeIcon {
+  margin-right: 10px;
+}
+
+td {
+  & > .routeExpandableRow__routeContainer:first-child {
+    margin-top: var(--gutter);
+  }
+}

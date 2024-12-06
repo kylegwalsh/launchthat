@@ -1,0 +1,24 @@
+.userModal__rolesContainer {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.userModal__checkboxContainer {
+  box-shadow: 0px 2px 0px 1px rgba(0, 0, 0, 0.1);
+  outline-color: var(--secondaryColor);
+  outline-offset: 0;
+  border: 2px solid var(--primaryColor--light);
+  padding: calc(2*var(--gutter));
+}
+
+.userModal__checkColumn {
+  flex: 2!important;
+}
+
+.userModal__toggleColumn {
+  flex: 1!important;
+}
+
+.userModal__toggle {
+  display: inline-block;
+}

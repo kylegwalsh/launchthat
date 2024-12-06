@@ -1,0 +1,54 @@
+pipeline {
+  agent {
+    node {
+      label 'master'
+    }
+
+  }
+  stages {
+    stage('Unit Tests') {
+      parallel {
+        stage('Unit Tests') {
+          agent {
+            node {
+              label 'master'
+            }
+
+          }
+          steps {
+            catchError() {
+              sh 'npm install'
+              sh 'npm run-script ci-test'
+            }
+
+            junit 'junit.xml'
+          }
+        }
+        stage('Slack Notification') {
+          steps {
+            slackSend(color: 'good', message: "Tests Started - ${env.JOB_NAME}")
+          }
+        }
+      }
+    }
+    stage('Failure') {
+      when {
+        equals expected: 'FAILURE', actual: currentBuild.result
+      }
+      steps {
+        slackSend(color: 'danger', message: "Tests Failed - ${env.JOB_NAME} (<${env.RUN_DISPLAY_URL}|View Results>)")
+      }
+    }
+    stage('Success') {
+      when {
+        not {
+          equals expected: 'FAILURE', actual: currentBuild.result
+        }
+
+      }
+      steps {
+        slackSend(color: 'good', message: "Tests Succeeded - ${env.JOB_NAME} (<${env.RUN_DISPLAY_URL}|View Results>)")
+      }
+    }
+  }
+}

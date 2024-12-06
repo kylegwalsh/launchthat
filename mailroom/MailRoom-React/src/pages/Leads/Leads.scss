@@ -1,0 +1,24 @@
+.leads__progressContainer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.leads__status {
+  font-weight: bold;
+}
+
+.leads__status--success {
+  color: var(--successColor--dark);
+}
+
+.leads__status--failed {
+  color: var(--errorColor--dark);
+}
+
+.leads__status--unsent {
+  color: var(--warningColor--dark);
+}
+
+.leads__status--inactive {
+  color: var(--textColor);
+}

@@ -1,0 +1,27 @@
+.appTile {
+  width: 25%;
+  border: 2px solid transparent;
+  padding: 15px;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: #cecece;
+    border-radius: 4px;
+  }
+}
+
+.appTile__img {
+  width: 100%;
+  height: auto;
+}
+
+.appTile__name {
+  margin: 0;
+  text-align: center;
+  color: var(--textColor--dark);
+  font-weight: bold;
+}

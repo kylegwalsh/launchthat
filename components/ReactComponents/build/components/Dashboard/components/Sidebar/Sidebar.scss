@@ -1,0 +1,92 @@
+.sidebar {
+  height: 100%;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.15);
+  background-color: #fff;
+  border-right: 1px solid var(--textColor--light);
+  box-sizing: border-box;
+
+  &.mini {
+    width: auto;
+  }
+}
+
+.sidebar__content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    overflow: auto;
+  }
+
+  & > div:nth-child(3) {
+    pointer-events: none;
+  }
+}
+
+.sidebar__list {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar__listItem {
+  display: list-item;
+  text-align: -webkit-match-parent;
+  border-left: 4px solid transparent;
+  width: 100%;
+  box-sizing: border-box;
+
+  &.mini {
+    a {
+      padding: 16px 14px 16px 14px;
+    }
+
+    svg {
+      font-size: 2rem!important;
+      margin-right: 0;
+    }
+  }
+
+  a {
+    display: block;
+    font-size: 14px;
+    min-width: inherit;
+    padding: 16px 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border-radius: 0;
+    user-select: none;
+    color: var(--textColor);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    svg {
+      margin-right: 10px;
+    }
+  }
+
+  &:hover a {
+    color: var(--linkColor);
+  }
+
+  &.active {
+    border-color: var(--linkColor);
+
+    a {
+      color: var(--linkColor);
+    }
+  }
+}
+
+.sidebar__tooltip {
+  font-size: 1.3rem;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-weight: 500;
+}

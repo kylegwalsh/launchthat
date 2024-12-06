@@ -1,0 +1,64 @@
+.dataModal {
+  & > div:last-of-type {
+    & > div:first-of-type {
+      padding: 50px;
+      padding-bottom: 0px;
+      width: 700px;
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+      position: absolute;
+      top: 0;
+    }
+  }
+}
+
+.dataModal__header {
+  display: flex;
+  align-items: center;
+  padding: 0px 5px;
+}
+
+.dataModal__headerText {
+  font-weight: bold;
+}
+
+.dataModal__exit {
+  margin-left: auto;
+  font-size: 28px!important;
+  cursor: pointer;
+}
+
+.dataModal__tabContainer {
+  margin-top: 15px;
+  padding: 0px 5px 10px 5px;
+  width: 100%;
+  border-bottom: 1px solid var(--primaryColor--light);
+  box-sizing: border-box;
+
+  .dataModal__tab:not(:first-child) {
+    margin-left: 25px;
+  }
+}
+
+.dataModal__tab {
+  color: var(--textColor--dark);
+  border-bottom: 4px solid transparent;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  cursor: pointer;
+  user-select: none;
+
+  &.active {
+    border-color: var(--secondaryColor);
+  }
+}
+
+.dataModal__body {
+  padding: 20px 5px;
+}
+
+.dataModal__button {
+  margin-left: auto!important;
+  margin-top: calc(2*var(--gutter))!important;
+}

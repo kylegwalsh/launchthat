@@ -1,0 +1,179 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs: docs.serverless.com
+#
+# Happy Coding!
+
+# The name of your service
+service: mailroom-intake # NOTE: update this with your service name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+# Serverless plugins
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+custom:
+  # Serverless-webpack configuration
+  # Enable auto-packing of external modules
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  # Manages stage of serverless stack (dev OR prod)
+  stage: ${opt:s, "dev"}
+
+# Serverless provider details
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-east-1
+  stage: ${self:custom.stage}
+  timeout: 900 # 15 minutes
+  environment:
+    stage: ${self:custom.stage}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Resource: "*"
+      Action:
+        - "logs:CreateLogGroup"
+        - "logs:CreateLogStream"
+        - "logs:PutLogEvents"
+        - "ec2:CreateNetworkInterface"
+        - "ec2:DescribeNetworkInterfaces"
+        - "ec2:DeleteNetworkInterface"
+        - "ssm:GetParameters"
+        - "sqs:SendMessage"
+        - "sns:Publish"
+
+# you can add statements to the Lambda function's IAM Role here
+#  iamRoleStatements:
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:ListBucket"
+#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:PutObject"
+#      Resource:
+#        Fn::Join:
+#          - ""
+#          - - "arn:aws:s3:::"
+#            - "Ref" : "ServerlessDeploymentBucket"
+#            - "/*"
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+# you can add packaging information here
+#package:
+#  include:
+#    - include-me.js
+#    - include-me-dir/**
+#  exclude:
+#    - exclude-me.js
+#    - exclude-me-dir/**
+
+functions:
+  formatChat:
+    handler: functions/formatChat.handler
+    vpc:
+      securityGroupIds:
+        - sg-05aaf52a6596e5c3f
+      subnetIds:
+        - subnet-04243989fa5255d4c
+        - subnet-085556d0c080df501
+        - subnet-055f8d0fd79c7d59e
+        - subnet-0019ebefaea9e0043
+        - subnet-0fff1560b4e4a9894
+        - subnet-08df875155c0d8bbd
+    events:
+      - sqs:
+          arn: arn:aws:sqs:us-east-1:382977655890:mailroom-intake-${self:custom.stage}-formatChat
+          batchSize: 1
+  aggregate:
+    handler: functions/aggregate.handler
+    vpc:
+      securityGroupIds:
+        - sg-05aaf52a6596e5c3f
+      subnetIds:
+        - subnet-04243989fa5255d4c
+        - subnet-085556d0c080df501
+        - subnet-055f8d0fd79c7d59e
+        - subnet-0019ebefaea9e0043
+        - subnet-0fff1560b4e4a9894
+        - subnet-08df875155c0d8bbd
+    events:
+      - sqs:
+          arn: arn:aws:sqs:us-east-1:382977655890:mailroom-intake-${self:custom.stage}-aggregate
+          batchSize: 1
+  normalize:
+    handler: functions/normalize.handler
+    vpc:
+      securityGroupIds:
+        - sg-05aaf52a6596e5c3f
+      subnetIds:
+        - subnet-04243989fa5255d4c
+        - subnet-085556d0c080df501
+        - subnet-055f8d0fd79c7d59e
+        - subnet-0019ebefaea9e0043
+        - subnet-0fff1560b4e4a9894
+        - subnet-08df875155c0d8bbd
+    events:
+      - sqs:
+          arn: arn:aws:sqs:us-east-1:382977655890:mailroom-intake-${self:custom.stage}-normalize
+          batchSize: 1
+
+#    The following are a few example events you can configure
+#    NOTE: Please make sure to change your handler code to work with those events
+#    Check the event documentation for details
+#    events:
+#      - http:
+#          path: users/create
+#          method: get
+#      - s3: ${env:BUCKET}
+#      - schedule: rate(10 minutes)
+#      - sns: greeter-topic
+#      - stream: arn:aws:dynamodb:region:XXXXXX:table/foo/stream/1970-01-01T00:00:00.000
+#      - alexaSkill: amzn1.ask.skill.xx-xx-xx-xx
+#      - alexaSmartHome: amzn1.ask.skill.xx-xx-xx-xx
+#      - iot:
+#          sql: "SELECT * FROM 'some_topic'"
+#      - cloudwatchEvent:
+#          event:
+#            source:
+#              - "aws.ec2"
+#            detail-type:
+#              - "EC2 Instance State-change Notification"
+#            detail:
+#              state:
+#                - pending
+#      - cloudwatchLog: '/aws/lambda/hello'
+#      - cognitoUserPool:
+#          pool: MyUserPool
+#          trigger: PreSignUp
+
+#    Define function environment variables here
+#    environment:
+#      variable2: value2
+
+# you can add CloudFormation resource templates here
+#resources:
+#  Resources:
+#    NewResource:
+#      Type: AWS::S3::Bucket
+#      Properties:
+#        BucketName: my-new-bucket
+#  Outputs:
+#     NewOutput:
+#       Description: "Description for the output"
+#       Value: "Some output value"

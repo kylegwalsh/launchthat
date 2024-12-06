@@ -1,0 +1,13 @@
+.iconCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    font-size: 1.8rem!important;
+  }
+}

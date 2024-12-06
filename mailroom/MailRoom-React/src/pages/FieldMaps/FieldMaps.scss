@@ -1,0 +1,48 @@
+.fieldMap__boxRow {
+  flex-direction: row;
+}
+
+.fieldMaps__cardContainer {
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.fieldMaps__cardContent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  color: var(--textColor);
+  max-width: 350px;
+  padding-top: 50px!important;
+  padding-bottom: 50px!important;
+}
+
+.fieldMaps__arrowIcon {
+  background-color: var(--secondaryColor--light);
+  color: var(--secondaryColor--dark);
+  border-radius: 50%;
+  font-size: 3.5rem!important;
+  margin-top: var(--gutter);
+  margin-bottom: calc(3*var(--gutter));
+}
+
+.fieldMaps__h3 {
+  margin: 0;
+  text-align: center;
+  margin-bottom: calc(3*var(--gutter));
+  font-size: 1.4rem;
+}
+
+.fieldMaps__p {
+  margin: 0;
+  text-align: center;
+  margin-bottom: calc(3*var(--gutter));
+  font-size: 1.1rem;
+}
+
+.fieldMaps__link {
+  min-height: 100%;
+  text-decoration: none;
+}

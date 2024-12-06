@@ -1,0 +1,47 @@
+.tabMargin {
+  margin: calc(1*var(--gutter)) 0;
+}
+
+.sidebar__listItem.mini svg {
+  font-size: 1.6rem!important;
+  padding: 0 3px;
+}
+
+.table {
+  margin-top: var(--gutter);
+}
+
+.breadcrumbs {
+  svg {
+    font-size: 1.2rem!important;
+  }
+}
+
+.breadcrumbs__wrapper {
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbs__error {
+  color: var(--errorColor);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.header__logo {
+  height: 60%;
+}
+
+.sidebar__tooltip {
+  font-size: 1.1rem;
+}
+
+.table {
+  & > div:first-child {
+    & > div:nth-child(3) {
+      min-height: 584px;
+      max-height: 584px;
+    }
+  }
+}

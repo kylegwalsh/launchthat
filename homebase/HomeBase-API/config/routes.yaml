@@ -1,0 +1,23 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+counts:
+    path: /api/counts/
+    controller: App\Controller\CountController::index
+campaign_details:
+    path: /api/campaign_details/
+    controller: App\Controller\CampaignDetailsController::index
+
+auth_google:
+    path: /auth/
+    controller: App\Controller\AuthController::google
+auth_verify:
+    path: /api/verify/
+    controller: App\Controller\AuthController::verify
+
+create_user_trigger:
+    path: /it/create/
+    controller: App\Controller\ITController::create
+delete_user_trigger:
+    path: /it/delete/
+    controller: App\Controller\ITController::delete

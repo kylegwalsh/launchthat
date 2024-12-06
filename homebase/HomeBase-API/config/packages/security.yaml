@@ -1,0 +1,54 @@
+security:
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: googleId
+
+    firewalls:
+        api:
+            pattern: ^/api/*
+            anonymous: true
+            stateless: true
+            guard:
+                authenticators:
+                    - App\Security\TokenAuthenticator
+
+        it:
+            pattern: ^/it/*
+            anonymous: true
+            stateless: true
+            guard:
+                authenticators:
+                    - App\Security\TokenAuthenticator
+
+        main:
+            pattern: ^/
+            anonymous: true
+            stateless: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+          - { path: ^/auth, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+          - { path: ^/api/(.+), roles: ROLE_USER, methods: [GET] }
+          - { path: ^/api/(.+), roles: ROLE_ADMIN }
+          - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY, ips: [45.27.253.208/28, 170.55.166.136/30, 170.55.47.32/28, 45.27.253.210, 127.0.0.1] }
+          - { path: ^/api, roles: ROLE_NO_ACCESS}
+          - { path: ^/it/(.+), roles: ROLE_GOOGLE_WEB_HOOK }
+        # - { path: ^/, roles: ROLE_NO_ACCESS}
+        # - { path: ^/, roles: ROLE_USER }
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+#- { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY, ips: [45.333.32.33, 150.55.166.136, 127.0.0.1] }
+#
+#    firewalls:
+#        main:
+#            pattern: ^/api/*
+#            logout: ~
+
+#
+            # if you want, disable storing the user in the session
+#            stateless: true
+#

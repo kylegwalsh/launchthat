@@ -1,0 +1,100 @@
+.fieldMapColumn__container {
+  margin: var(--gutter);
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldMapColumn__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background-color 0.1s ease;
+}
+
+.fieldMapColumn__header--notDraggable {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.fieldMapColumn__inputWrapper {
+  flex-grow: 1;
+}
+
+.fieldMapColumn__title {
+  color: var(--textColor--dark);
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.fieldMapColumn__titleInputContainer {
+  transition: background-color ease 0.2s;
+  padding: calc(4 * var(--gutter)) var(--gutter);
+  user-select: none;
+  position: relative;
+  margin: 0px;
+}
+
+.fieldMapColumn__label {
+  text-transform: capitalize;
+  color: var(--textColor--dark);
+  font-weight: 600;
+  margin: 0;
+}
+
+.fieldMapColumn__labelWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: var(--gutter);
+  border: var(--gutter);
+  padding-bottom: 0;
+  padding-top: 0;
+  user-select: none;
+}
+
+.fieldMapColumn__iconColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  padding: var(--gutter); 
+
+  &.fieldMapRow__iconColumn__iconEnd {
+    justify-content: flex-end;
+    padding-bottom: 17px;
+  }
+}
+
+.fieldMapColumn__addIcon {
+  font-size: 2.5rem!important;
+  color: var(--textColor);
+  user-select: none;
+
+  &:hover {
+    color: var(--primaryColor);
+  }
+}
+
+.fieldMapColumn__dragIcon {
+  font-size: 2.5rem!important;
+  color: var(--textColor);
+  &:hover {
+    color: var(--linkColor);
+  }
+}
+
+.fieldMapColumn__iconNotVisible {
+  visibility: hidden;
+  height: 1px !important;
+}
+
+.fieldMapColumn__deleteIcon {
+  font-size: 2.5rem!important;
+  color: var(--textColor);
+  user-select: none;
+
+  &:hover {
+    color: var(--errorColor);
+  }
+}

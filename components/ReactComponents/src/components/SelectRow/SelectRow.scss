@@ -1,0 +1,27 @@
+.selectRow__iconColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  padding: var(--gutter); 
+}
+
+.selectRow__addIcon {
+  font-size: 2.5rem!important;
+  color: var(--textColor);
+  user-select: none;
+
+  &:hover {
+    color: var(--primaryColor);
+  }
+}
+
+.selectRow__deleteIcon {
+  font-size: 2.5rem!important;
+  color: var(--textColor);
+  user-select: none;
+
+  &:hover {
+    color: var(--errorColor);
+  }
+}

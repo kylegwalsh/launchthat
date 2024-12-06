@@ -1,0 +1,79 @@
+/* Themes */
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-Regular.otf');
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-RegularItalic.otf');
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-SemiBold.otf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-SemiBoldItalic.otf');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-Black.otf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/metropolis/Metropolis-BlackItalic.otf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+:root {
+  // Theme color pallet
+  --primaryColor--light: #aeabce;
+  --primaryColor: #1e1577;
+  --primaryColor--dark: #160e51;
+  --secondaryColor--light: #d3d0f0;
+  --secondaryColor: #847dd4;
+  --secondaryColor--dark: #615590;
+  --accentColor--light: #fbbfb1;
+  --accentColor: #f34e26;
+  --accentColor--dark: #b3351a;
+  --extraColor1--light: #a5bed2;
+  --extraColor1: #064A83;
+  --extraColor1--dark: #021A2F;
+  --extraColor2--light: #fbb7b7;
+  --extraColor2: #F53737;
+  --extraColor2--dark: #B42525;
+  --extraColor3--light: #fee0a3;
+  --extraColor3: #FDA800;
+  --extraColor3--dark: #BA7200;
+
+  // Status colors
+  --successColor--light: #e1efb2;
+  --successColor: #ABD22A;
+  --successColor--dark: #7E8F1D;
+  --errorColor--light: #fbb7b7;
+  --errorColor: #F53737;
+  --errorColor--dark: #B42525;
+  --warningColor--light: #fee0a3;
+  --warningColor: #FDA800;
+  --warningColor--dark: #BA7200;
+
+  // Text colors
+  --linkColor: #f34e26;
+  --linkColor--hover: #b3351a;
+  --textColor--light: #CED2D6;
+  --textColor: #798490;
+  --textColor--dark: #392F33;
+
+  // Background
+  --backgroundColor: #E0E8EF;
+
+  // Spacing variable
+  --gutter: .5rem;
+}

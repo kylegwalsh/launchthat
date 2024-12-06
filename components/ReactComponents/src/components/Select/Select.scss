@@ -1,0 +1,39 @@
+.select {
+  border-radius: 0!important;
+
+  &.error {
+    .select__control {
+      border-color: var(--errorColor)!important;
+    }
+  }
+}
+
+.select__control {
+  border-radius: 0!important;
+  border-color: transparent!important;
+  padding: 1px!important;
+  border: 2px solid var(--primaryColor--light)!important;
+  outline-offset: 0!important;
+  outline-color: var(--secondaryColor)!important;
+  background-color: #fff!important;
+  box-shadow: 0px 2px 0px 1px rgba(0, 0, 0, 0.1)!important;
+}
+
+.select__control--is-disabled {
+  border-radius: 0!important;
+  padding: 1px!important;
+  border: 2px solid var(--primaryColor--light)!important;
+  background-color: #ebebeb!important;
+}
+
+.select__placeholder {
+  color: var(--textColor--dark)!important;
+}
+
+.select__single-value {
+  color: var(--textColor--dark)!important;
+}
+
+.select__single-value--is-disabled {
+  color: #545454!important;
+}
